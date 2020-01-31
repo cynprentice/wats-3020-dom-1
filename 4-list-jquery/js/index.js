@@ -6,7 +6,6 @@ $(document).ready(function () {
     let itemInput = $("[name='item-input']");
     let itemValue = itemInput.val();
 
-    //console.log("itemValue is " + itemValue);
     //check that user has input a value before proceeding
     if (itemValue.length !== 0) {
       //create new item
@@ -16,11 +15,16 @@ $(document).ready(function () {
 
       //set up toggle on check box click
       $(":checkbox").change(function (event) {
+        let completedItem = $(this).siblings("label").text();
+
         if ($(this).is(':checked')) {
-          $(this).siblings("label").css("text-decoration", "line-through")
-        } else {
-          $(this).siblings("label").css("text-decoration", "none")
+
+          $(".completed-list").append("<li> " + completedItem + " </li>");
+          $(".completed-list").last().css("color", "blue");
+          $(this).prop("checked", false);
+          $(this).parent().remove();
         }
+
       }) // checkbox event function
 
     }

@@ -29,12 +29,20 @@ document.addEventListener("DOMContentLoaded", function (e) {
       //add a click event listener that serves a toggle
       newCheckbox.addEventListener("click", function (event) {
         //        console.log("changed this this checkbox: " + this.nextSibling.textContent + "with this textDecoration" + this.nextSibling.style.textDecoration);
+        let completedItem = document.createElement("li");
+        completedItem.textContent = this.nextSibling.textContent;
+        document.getElementById("completed-list").appendChild(completedItem);
+        this.parentElement.remove();
+
+        /*
         if (this.nextSibling.style.textDecoration == "line-through") {
           // TODO set the textDecoration style on this.nextSibling to blank (empty string)
           this.nextSibling.style.textDecoration = '';
         } else {
           this.nextSibling.style.textDecoration = "line-through";
         }
+
+        */
       });
 
     }
